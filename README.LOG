@@ -1,0 +1,9 @@
+
+[][][] CHANGELOGS [][][]
+
+[*] initial official release
+
+- Added support for most basic I/O methods
+- Added direct interface to handle PDL object
+- Added sample script/benchmark in bin/ folder.
+- Added test codes in t/ folder.
