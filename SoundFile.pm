@@ -1,6 +1,6 @@
 # -*- mode: perl -*-
 #
-# $Id: SoundFile.pm,v 1.4 2001/01/07 05:22:45 tai Exp $
+# $Id: SoundFile.pm,v 1.6 2002/08/21 15:05:21 tai Exp $
 #
 
 package Audio::SoundFile;
@@ -46,7 +46,7 @@ use Audio::SoundFile::Writer;
 use strict;
 use vars qw($VERSION);
 
-$VERSION = '0.14';
+$VERSION = '0.15';
 
 =head1 NOTES
 

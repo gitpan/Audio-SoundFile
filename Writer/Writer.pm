@@ -1,6 +1,6 @@
 # -*- mode: perl -*-
 #
-# $Id: Writer.pm,v 1.2 2001/01/07 04:06:48 tai Exp $
+# $Id: Writer.pm,v 1.3 2002/08/21 14:48:53 tai Exp $
 #
 
 package Audio::SoundFile::Writer;

@@ -1,6 +1,6 @@
 # -*- mode: perl -*-
 #
-# $Id: Reader.pm,v 1.3 2001/01/07 05:20:54 tai Exp $
+# $Id: Reader.pm,v 1.4 2002/08/21 14:48:27 tai Exp $
 #
 
 package Audio::SoundFile::Reader;

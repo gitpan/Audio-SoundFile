@@ -1,4 +1,10 @@
 
+[][][] Future Development Plan [][][]
+
+- Add more block-level/frame-level I/O interface.
+- Add more tests in t/ folder.
+- Test for more formats.
+
 [][][] CHANGELOGS [][][]
 
 [*] initial official release
