@@ -37,16 +37,17 @@ new(name, path, href)
   char *name
   char *path
   SV   *href
+PROTOTYPE: $$$
 PREINIT:
   SF_INFO *info;
   SNDFILE *file;
   HV      *hash;
 PPCODE:
 {
-  if ((info = Audio_SoundFile_Header_toSFinfo(href)) == NULL)
+  if ((info = Audio_SoundFile_Header_toSFinfo(aTHX_ href)) == NULL)
     XSRETURN_UNDEF;
 
-  if ((file = sf_open_write(path, info)) == NULL)
+  if ((file = sf_open(path, SFM_WRITE, info)) == NULL)
     XSRETURN_UNDEF;
 
   hash = newHV();
@@ -60,6 +61,7 @@ PPCODE:
 SV *
 close(self)
   SV *self
+PROTOTYPE: $
 PREINIT:
   HV  *hash;
   SV **file;
@@ -76,6 +78,7 @@ bseek(self, offset, whence)
   SV    *self
   off_t  offset
   int    whence
+PROTOTYPE: $$$
 PREINIT:
   SF_INFO *info;
   HV      *hash;
@@ -85,7 +88,7 @@ PPCODE:
 {
   CHECK_AND_INIT(self, hash, file, head);
 
-  info = Audio_SoundFile_Header_toSFinfo(*head);
+  info = Audio_SoundFile_Header_toSFinfo(aTHX_ *head);
 
   XSRETURN_IV(info->channels * sf_seek((SNDFILE *)SvIV(*file),
                                        info->channels * offset, whence));
@@ -96,6 +99,7 @@ fseek(self, offset, whence)
   SV    *self
   off_t  offset
   int    whence
+PROTOTYPE: $$$
 PREINIT:
   HV  *hash;
   SV **file;
@@ -111,6 +115,7 @@ SV *
 bwrite_raw(self, buff)
   SV *self
   SV *buff
+PROTOTYPE: $$
 PREINIT:
   HV    *hash;
   SV   **file;
@@ -132,6 +137,7 @@ SV *
 bwrite_pdl(self, buff)
   SV  *self
   pdl *buff
+PROTOTYPE: $$
 PREINIT:
   HV    *hash;
   SV   **file;
@@ -150,6 +156,7 @@ SV *
 fwrite_raw(self, buff)
   SV *self
   SV *buff
+PROTOTYPE: $$
 PPCODE:
 {
   XSRETURN_UNDEF; /* FIXME: not yet implemented */
@@ -159,6 +166,7 @@ SV *
 fwrite_pdl(self, buff)
   SV  *self
   pdl *buff
+PROTOTYPE: $$
 PPCODE:
 {
   XSRETURN_UNDEF; /* FIXME: not yet implemented */

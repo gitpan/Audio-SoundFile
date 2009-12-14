@@ -1,14 +1,13 @@
-
-[][][] Future Development Plan [][][]
-
+=== TODO ===
 - Add more block-level/frame-level I/O interface.
 - Add more tests in t/ folder.
 - Test for more formats.
 
-[][][] CHANGELOGS [][][]
+=== ChangeLog ===
+0.16
+- Now works with latest libsndfile (1.0.20). Contributed by Aldo Calpini.
 
-[*] initial official release
-
+0.15 (and eariler)
 - Added support for most basic I/O methods
 - Added direct interface to handle PDL object
 - Added sample script/benchmark in bin/ folder.

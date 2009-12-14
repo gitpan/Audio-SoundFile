@@ -20,11 +20,10 @@ ok(1);
 $format = {
     samplerate  => 44100,
     channels    => 2,
-    pcmbitwidth => 16,
-    format      => SF_FORMAT_WAV | SF_FORMAT_PCM,
+    format      => SF_FORMAT_WAV | SF_FORMAT_PCM_16,
 };
 
-ok($header = new Audio::SoundFile::Header(%{$format}));
+ok($header = new Audio::SoundFile::Header(%{$format})) or die $@;
 ok($header->format_check);
 ok($header->get("channels") == 2);
 

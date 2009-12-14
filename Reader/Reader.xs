@@ -37,6 +37,7 @@ new(name, path, href)
   char *name
   char *path
   SV   *href
+PROTOTYPE: $$$
 PREINIT:
   SF_INFO  info;
   SNDFILE *file;
@@ -48,10 +49,10 @@ PPCODE:
   if (! SvROK(href))
     XSRETURN_UNDEF;
 
-  if ((file = sf_open_read(path, &info)) == NULL)
+  if ((file = sf_open(path, SFM_READ, &info)) == NULL)
     XSRETURN_UNDEF;
 
-  if (! SvOK(head = Audio_SoundFile_Header_toObject(NULL, &info)))
+  if (! SvOK(head = Audio_SoundFile_Header_toObject(aTHX_ NULL, &info)))
     XSRETURN_UNDEF;
 
   sv_setsv(SvRV(href), head);
@@ -67,6 +68,7 @@ PPCODE:
 SV *
 close(self)
   SV *self
+PROTOTYPE: $
 PREINIT:
   HV  *hash;
   SV **file;
@@ -83,6 +85,7 @@ bseek(self, offset, whence)
   SV    *self
   off_t  offset
   int    whence
+PROTOTYPE: $$$
 PREINIT:
   SF_INFO *info;
   HV      *hash;
@@ -92,7 +95,7 @@ PPCODE:
 {
   CHECK_AND_INIT(self, hash, file, head);
 
-  info = Audio_SoundFile_Header_toSFinfo(*head);
+  info = Audio_SoundFile_Header_toSFinfo(aTHX_ *head);
 
   XSRETURN_IV(info->channels * sf_seek((SNDFILE *)SvIV(*file),
                                        info->channels * offset, whence));
@@ -103,6 +106,7 @@ fseek(self, offset, whence)
   SV    *self
   off_t  offset
   int    whence
+PROTOTYPE: $$$
 PREINIT:
   HV  *hash;
   SV **file;
@@ -119,6 +123,7 @@ bread_raw(self, bref, blocks)
   SV     *self
   SV     *bref
   size_t  blocks
+PROTOTYPE: $$$
 PREINIT:
   HV    *hash;
   SV   **file;
@@ -144,9 +149,10 @@ PPCODE:
 
 int
 bread_pdl(self, bref, blocks)
-  SV     *self
-  SV     *bref
-  size_t  blocks
+  SV  *self
+  SV  *bref
+  int  blocks
+PROTOTYPE: $$$
 PREINIT:
   HV    *hash;
   SV   **file;
@@ -159,7 +165,7 @@ PPCODE:
 
   newp = PDL->create(PDL_PERM);
   newp->datatype = PDL_S;
-  PDL->setdims(newp, &blocks, 1);
+  PDL->setdims(newp, (PDL_Long *)&blocks, 1);
   PDL->allocdata(newp);
 
   blen = sf_read_short((SNDFILE *)SvIV(*file), newp->data, blocks);
@@ -181,6 +187,7 @@ fread_raw(self, bref, frames)
   SV     *self
   SV     *bref
   size_t  frames
+PROTOTYPE: $$$
 PPCODE:
 {
   XSRETURN_UNDEF; /* FIXME: not yet implemented */
@@ -191,6 +198,7 @@ fread_pdl(self, bref, frames)
   SV     *self
   SV     *bref
   size_t  frames
+PROTOTYPE: $$$
 PPCODE:
 {
   XSRETURN_UNDEF; /* FIXME: not yet implemented */

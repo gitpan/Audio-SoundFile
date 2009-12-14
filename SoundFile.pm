@@ -46,7 +46,7 @@ use Audio::SoundFile::Writer;
 use strict;
 use vars qw($VERSION);
 
-$VERSION = '0.15';
+$VERSION = '0.16';
 
 =head1 NOTES
 
@@ -54,7 +54,8 @@ I have only tested the code with .au and .wav formats.
 
 =head1 AUTHORS / CONTRIBUTORS
 
-Taisuke Yamada E<lt>tai@imasy.or.jpE<gt>
+ Taisuke Yamada <tai atmark rakugaki.org>
+ Aldo Calpini <dada atmark perl.it>
 
 =head1 COPYRIGHT
 

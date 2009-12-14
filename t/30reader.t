@@ -26,7 +26,7 @@ exit(0);
 sub testfile {
     my $file = shift;
 
-    ok($reader = new Audio::SoundFile::Reader($file, \$header));
+    ok($reader = new Audio::SoundFile::Reader($file, \$header)) or die $@;
     ok($header);
 
     while (my($k, $v) = each %{$header}) {

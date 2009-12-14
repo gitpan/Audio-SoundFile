@@ -1,4 +1,3 @@
-CHANGE.LOG
 Header/Makefile.PL
 Header/Header.pm
 Header/Header.xs
@@ -7,6 +6,7 @@ Header/header.h
 Header/header.x.h
 MANIFEST
 Makefile.PL
+NOTE
 README.TXT
 Reader/Makefile.PL
 Reader/Reader.pm
@@ -35,3 +35,4 @@ tmp/tt0.aiff
 tmp/tt0.au
 tmp/tt1.au
 tmp/tt0-long.au
+META.yml                                 Module meta-data (added by MakeMaker)

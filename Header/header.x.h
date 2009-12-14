@@ -6,8 +6,8 @@
 #ifndef __CEXTRACT__
 #ifdef __STDC__
 
-extern SV * Audio_SoundFile_Header_toObject ( HV *hash, SF_INFO *info );
-extern SF_INFO * Audio_SoundFile_Header_toSFinfo ( SV *self );
+extern SV * Audio_SoundFile_Header_toObject(pTHX_ HV *hash, SF_INFO *info );
+extern SF_INFO * Audio_SoundFile_Header_toSFinfo(pTHX_ SV *self );
 
 #else /* __STDC__ */
 

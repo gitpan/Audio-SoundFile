@@ -98,6 +98,8 @@ use vars qw($VERSION @ISA);
 $VERSION = (split(/\s+/, q$Revision 1.1$))[1] / 10;
 @ISA     = qw(DynaLoader);
 
+use PDL::Core;
+
 bootstrap Audio::SoundFile::Reader $VERSION;
 
 =head1 NOTES
